@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#070b17">
+<title>Voo Infinito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="screen on" id="main">
+  <div class="panel">
+    <h1>Voo<br>Infinito</h1>
+    <p>Toque na tela ou no seu botão para pular. Não bata nas barreiras!</p>
+    <button class="btn" data-a="go:online">Modo Online</button>
+    <button class="btn g" data-a="go:local">Modo Local</button>
+    <p class="kb">Teclado: ESPAÇO, ou Q · P · Z · M</p>
+    <p id="note"></p>
+  </div>
+</div>
+
+<div class="screen" id="local">
+  <div class="panel">
+    <h2>Modo Local</h2>
+    <p>Quantos jogadores no mesmo aparelho?</p>
+    <div class="grid4">
+      <button class="btn num" data-a="local:1">1</button>
+      <button class="btn num g" data-a="local:2">2</button>
+      <button class="btn num y" data-a="local:3">3</button>
+      <button class="btn num r" data-a="local:4">4</button>
+    </div>
+    <p class="kb">No PC: Q, P, Z e M (ou ESPAÇO no modo solo)</p>
+    <button class="btn small ghost" data-a="go:main">Voltar</button>
+  </div>
+</div>
+
+<div class="screen" id="online">
+  <div class="panel">
+    <h2>Modo Online</h2>
+    <p>Funciona entre celular, tablet e computador.</p>
+    <button class="btn" data-a="create">Criar sala</button>
+    <p>ou entre com o código:</p>
+    <input id="codeIn" maxlength="4" placeholder="ABCD" autocomplete="off" autocapitalize="characters" spellcheck="false">
+    <button class="btn g" data-a="join">Entrar na sala</button>
+    <p id="omsg"></p>
+    <button class="btn small ghost" data-a="go:main">Voltar</button>
+  </div>
+</div>
+
+<div class="screen" id="lobby">
+  <div class="panel">
+    <h2>Sala</h2>
+    <div id="code">----</div>
+    <div class="row">
+      <button class="btn small" data-a="share">Compartilhar link</button>
+      <button class="btn small ghost" data-a="copy">Copiar código</button>
+    </div>
+    <div id="slots"></div>
+    <button class="btn g" id="startBtn" data-a="start">Iniciar jogo</button>
+    <p id="wait">Aguardando o anfitrião iniciar...</p>
+    <button class="btn small ghost" data-a="leave">Sair da sala</button>
+  </div>
+</div>
+
+<div id="game">
+  <div id="shell">
+    <div id="stage">
+      <canvas id="cv"></canvas>
+      <div id="hud">
+        <div class="chip" style="--c:var(--c0)"><i></i><b>0</b></div>
+        <div class="chip" style="--c:var(--c1)"><i></i><b>0</b></div>
+        <div class="chip" style="--c:var(--c2)"><i></i><b>0</b></div>
+        <div class="chip" style="--c:var(--c3)"><i></i><b>0</b></div>
+      </div>
+      <button id="quit" data-a="leave" aria-label="Sair">✕</button>
+    </div>
+    <div id="dock">
+      <button class="key" style="--c:var(--c0)" aria-label="Jogador 1: pular"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.5 13h5.3v8h6.4v-8h5.3z"/></svg><span class="nm">Ciano</span><kbd>Q</kbd></button>
+      <button class="key" style="--c:var(--c1)" aria-label="Jogador 2: pular"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.5 13h5.3v8h6.4v-8h5.3z"/></svg><span class="nm">Verde</span><kbd>P</kbd></button>
+      <button class="key" style="--c:var(--c2)" aria-label="Jogador 3: pular"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.5 13h5.3v8h6.4v-8h5.3z"/></svg><span class="nm">Amarelo</span><kbd>Z</kbd></button>
+      <button class="key" style="--c:var(--c3)" aria-label="Jogador 4: pular"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.5 13h5.3v8h6.4v-8h5.3z"/></svg><span class="nm">Magenta</span><kbd>M</kbd></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
